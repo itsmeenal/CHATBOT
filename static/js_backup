@@ -1,0 +1,42 @@
+$(document).ready(function () {
+    // Triggering the chatbot's response on button click
+    $("#send-btn").click(function () {
+        const userInput = $("#user-input").val().trim(); // Get input value
+        if (userInput === "") {
+            alert("Please enter a query."); // Handle empty input
+            return;
+        }
+
+        // Append user input to chat output
+        $("#chat-output").append(`<div class="user-msg"><b>You:</b> ${userInput}</div>`);
+
+        // Send user input to the backend
+        $.ajax({
+            url: "/get_book_info", // Backend endpoint
+            method: "POST", // HTTP method
+            contentType: "application/json", // Content type
+            data: JSON.stringify({ query: userInput }), // Send data as JSON
+            success: function (response) {
+                // Display chatbot's response
+                $("#chat-output").append(`<div class="bot-msg"><b>Bot:</b> ${response.response}</div>`);
+                $("#chat-output").scrollTop($("#chat-output")[0].scrollHeight); // Auto-scroll
+            },
+            error: function () {
+                // Handle errors
+                $("#chat-output").append(`<div class="bot-msg"><b>Bot:</b> Sorry, something went wrong.</div>`);
+            },
+        });
+
+        // Clear input field after sending
+        $("#user-input").val("");
+    });
+
+    // Trigger button click on Enter key press
+    $("#user-input").keypress(function (event) {
+        if (event.which == 13) {
+            event.preventDefault();
+            $("#send-btn").click();
+        }
+    });
+});
+
