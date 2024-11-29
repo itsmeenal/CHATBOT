@@ -1,21 +1,22 @@
 /* General body styling */
 body {
     font-family: 'Poppins', sans-serif; /* Modern font */
-    background: linear-gradient(to right, #6a11cb, #2575fc); /* Smooth gradient */
+    background: linear-gradient(to right, #6b4226, #d3d3d3); /* Vibrant brown to silver gradient */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    color: #333;
+    color: #4e342e; /* Deep brown for text */
 }
+
 
 /* Chatbot container */
 .chatbot-container {
     width: 400px;
-    background: #ffffff;
+    background: #fbe9e7; /* Light beige background */
     border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Deep shadow */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Softer shadow */
     padding: 20px;
     overflow: hidden;
     animation: slideIn 0.5s ease-out; /* Subtle slide animation */
@@ -37,20 +38,20 @@ body {
 #chat-output {
     height: 300px;
     overflow-y: auto;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #d7ccc8; /* Border to complement brown */
     margin-bottom: 15px;
     padding: 15px;
     border-radius: 10px;
-    background-color: #f7f7f7;
+    background-color: #fff8e1; /* Light creamy background */
     box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1); /* Inset shadow for depth */
-    color: #555;
+    color: #4e342e; /* Deep brown for text */
 }
 
 /* Chat output - user messages */
 .user-msg {
     margin-bottom: 10px;
     padding: 8px;
-    background: #3498db;
+    background: #a1887f; /* Soft brown for user messages */
     color: white;
     border-radius: 5px;
     align-self: flex-end;
@@ -62,34 +63,35 @@ body {
 .bot-msg {
     margin-bottom: 10px;
     padding: 8px;
-    background: #f1f1f1;
-    color: #333;
+    background: #e0dcd5; /* Light beige for bot messages */
+    color: #4e342e; /* Deep brown for text */
     border-radius: 5px;
     align-self: flex-start;
     width: fit-content;
     max-width: 70%;
-    border: 1px solid #ddd;
+    border: 1px solid #d7ccc8;
 }
 
 /* User input area */
 #user-input {
     padding: 12px;
-    border: 2px solid #ddd;
+    border: 2px solid #d7ccc8;
     border-radius: 25px;
     flex: 1;
     font-size: 14px;
     transition: border-color 0.3s ease-in-out; /* Border color effect */
+    background-color: #fff8e1; /* Light creamy input background */
 }
 
 #user-input:focus {
-    border-color: #3498db; /* Highlight on focus */
+    border-color: #a1887f; /* Highlight on focus with soft brown */
     outline: none;
 }
 
 /* Send button */
 #send-btn {
     padding: 12px 20px;
-    background: linear-gradient(to right, #3498db, #6a11cb); /* Gradient button */
+    background: linear-gradient(to right, #a1887f, #8d6e63); /* Brown gradient button */
     color: white;
     border: none;
     border-radius: 25px;
@@ -104,7 +106,7 @@ body {
 
 /* Button hover effect */
 #send-btn:hover {
-    background: linear-gradient(to right, #2575fc, #6a11cb); /* Hover gradient */
+    background: linear-gradient(to right, #8d6e63, #6d4c41); /* Darker brown gradient on hover */
     transform: scale(1.05); /* Slightly enlarge */
 }
 
@@ -121,11 +123,88 @@ body {
 }
 
 #chat-output::-webkit-scrollbar-thumb {
-    background: #3498db;
+    background: #a1887f;
     border-radius: 10px;
 }
 
 #chat-output::-webkit-scrollbar-thumb:hover {
-    background: #2575fc;
+    background: #8d6e63;
 }
 
+/* Intro container */
+.intro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* Header styling */
+.header {
+    font-size: 2em;
+    font-weight: 600;
+    color: #6d4c41; /* Darker brown for header */
+    margin-bottom: 10px;
+}
+
+.subheader {
+    font-size: 1.3em;
+    color: #4e342e; /* Deep brown for subheader */
+    margin-bottom: 20px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #6d4c41; /* Brown text for inactive tabs */
+    border: 2px solid #6d4c41;
+    background: #fbe9e7; /* Beige for background */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.tab-button:hover {
+    background-color: #a1887f; /* Brown background on hover */
+    color: white;
+}
+
+.tab-button.active {
+    background-color: #6d4c41; /* Darker brown for active tab */
+    color: white;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    font-size: 1.1em;
+    color: #4e342e; /* Deep brown for text */
+    line-height: 1.6;
+    transition: opacity 0.3s;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Features List */
+.features-list li {
+    margin-bottom: 10px;
+    color: #d3d3d3;
+}
+
+.features-list li:hover {
+    /* Darker brown on hover */
+    font-weight: 900;
+    cursor: pointer;
+    font-size: larger;
+}
+/* Custom font for headings */
