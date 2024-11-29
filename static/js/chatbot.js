@@ -49,3 +49,16 @@ $(document).ready(function () {
         }
     });
 });
+function showTabContent(index) {
+    // Hide all tab contents
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach((content) => content.classList.remove('active'));
+
+    // Deactivate all tab buttons
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach((button) => button.classList.remove('active'));
+
+    // Show the clicked tab content and activate the button
+    tabContents[index].classList.add('active');
+    tabButtons[index].classList.add('active');
+}
