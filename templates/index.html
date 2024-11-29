@@ -3,21 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Critique Chatbot</title>
+    <title>Book Critique Chatbot - VerseVue</title>
     <link rel="stylesheet" href="/static/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
-    
+    <style>
+        /* General Layout */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+
+        .left-side, .right-side {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Left Side Introduction */
+        .intro-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .header {
+            font-size: 4em;
+            
+            color: #fbe8d4;
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+
+        .subheader {
+            font-size: 1.3em;
+            color: #ab8888;
+            margin-bottom: 20px;
+        }
+
+        .features-list {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Right Side Chatbot */
+        .chatbot-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            right: 20%; /* Adjusted from 0% to 20% to shift left */
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .chatbox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #chat-output {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            min-height: 200px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+        }
+
+    </style>
 </head>
 <body>
-    <div class="chatbot-container">
-        <div class="chatbox">
-            <div id="chat-output"></div>
-            <input type="text" id="user-input" placeholder="Ask me about a book!">
-            <button id="send-btn">Send</button>
+
+    <!-- Left Side: Website Introduction -->
+    <!-- Left Side: Website Introduction -->
+    <div class="left-side">
+        <div class="intro-container">
+            <h1 class="header">Welcome to VerseVue</h1>
+            <h2 class="subheader">Your ultimate book critique platform</h2>
+            
+            <!-- Tabs Section -->
+            <div class="tabs">
+                <button class="tab-button active" onclick="showTabContent(0)">Features</button>
+                <button class="tab-button active " onclick="showTabContent(1)">Benefits</button>
+                <button class="tab-button active" onclick="showTabContent(2)">How It Works</button>
+            </div>
+    
+            <!-- Tab Content Section -->
+            <div class="tab-content active">
+                <ul class="features-list">
+                    <li><strong>Get Book Descriptions:</strong> Know the plot and summary of any book.</li>
+                    <li><strong>Ratings & Reviews:</strong> Access ratings and reviews from other readers.</li>
+                    <li><strong>Interactive Dashboard:</strong> A user-friendly dashboard to get all the book insights at your fingertips.</li>
+                    <li><strong>Book Recommendations:</strong> Discover books based on genres, popularity, and more.</li>
+                    <li><strong>Author Insights:</strong> Get information about authors and their work.</li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <ul class="features-list">
+
+                <li><strong>Benefits:</strong> Save time, make informed choices, and access curated insights for your next favorite book!</li>
+            </ul>
+            </div>
+            <div class="tab-content">
+                <ul class="features-list">
+                <li><strong>How It Works:</strong> Enter the book's title, and our chatbot will provide descriptions, ratings, and recommendations!</li>
+            </ul>
+            </div>
         </div>
     </div>
+    
+
+
+    <!-- Right Side: Chatbot -->
+    <div class="right-side">
+        <div class="chatbot-container">
+            <h1 class="header1">Book Critique Chatbot</h1>
+            <h2 class="subheader">Get descriptions, ratings, and reviews of any book you wish to read.</h2>
+
+            <div class="chatbox">
+                <div id="chat-output"></div>
+                <input type="text" id="user-input" placeholder="Ask me about a book!">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/static/js/chatbot.js"></script>
+
+    <script>
+        // Example function to handle user input and update the chatbot
+        document.getElementById('send-btn').addEventListener('click', function() {
+            var userInput = document.getElementById('user-input').value;
+            var chatOutput = document.getElementById('chat-output');
+            
+            if (userInput) {
+                // Simulate chatbot response based on user input
+                chatOutput.innerHTML += "<p><strong>You:</strong> " + userInput + "</p>";
+                chatOutput.innerHTML += "<p><strong>Bot:</strong> Here's the description and rating for the book you asked about. (Details will appear here based on your input.)</p>";
+                document.getElementById('user-input').value = ''; // Clear input field
+                chatOutput.scrollTop = chatOutput.scrollHeight; // Scroll to bottom
+            }
+        });
+    </script>
+
 </body>
 </html>
+
